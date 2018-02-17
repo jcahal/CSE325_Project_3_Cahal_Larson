@@ -11,7 +11,7 @@ void      carStop();        // Stop function initial definition
 
 
 
-int carSpeed = 0;           // define a variable for speed of the car
+int carSpeed = 20;           // define a variable for speed of the car
 
 void setup()               // All the initail configuration should be placed here in setup 
 {
@@ -26,20 +26,46 @@ void loop()                // Loop function which will be run forever
 }
 
 
-
-
-
 void driveSquare() 
 {  
-  // The code to drive the car in a square 
+  carServo.write(93); // Sets wheels straight
+  delay(5000);
+  
+  // Drives car forward at 10% duty for 4 seconds
+  analogWrite(pwmToMotor, carSpeed);  
+  delay(4000);
+
+  // Turns and drives to the right for 1.415 seconds
+  carServo.write(150);
+  delay(1415);
+
+  // Returns wheels straight and drives for 4 seconds
+  carServo.write(93); 
+  delay(4000);
+
+  // Turns and drives to the right for 1.415 seconds
+  carServo.write(150); 
+  delay(1415);
+
+  // Returns wheels straight and drives for 4 seconds
+  carServo.write(93); 
+  delay(4000);
+
+  // Turns and drives to the right for 1.415 seconds
+  carServo.write(150); 
+  delay(1415);
+
+  // Returns wheels straight and drives for 4 seconds
+  carServo.write(93); 
+  delay(4000);
+
+  // Turns and drives to the right for 1.250 seconds to return to original position
+  carServo.write(150); 
+  delay(1250);
+  
 }
 
 void carStop() 
 {
-  // The code to stop the car
+    analogWrite(pwmToMotor, 0); // Stops car
 }
-
-
-
-
-
